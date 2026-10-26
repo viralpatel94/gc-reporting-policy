@@ -1,0 +1,12 @@
+<!doctype html><html><head><meta charset="utf-8"><title>GC1719 Reporting - Connected</title><meta name="robots" content="noindex"></head>
+<body style="font-family:sans-serif;max-width:700px;margin:40px auto">
+<h1>QuickBooks connection</h1>
+<p id="msg">Reading response…</p>
+<textarea id="u" rows="5" style="width:100%" readonly></textarea>
+<p><button onclick="navigator.clipboard.writeText(document.getElementById('u').value);this.innerText='Copied'">Copy</button></p>
+<p style="color:#666;font-size:13px">This page runs only in your browser and sends nothing anywhere. Paste the copied text back to the GC1719 reporting setup. The one-time code expires in about 10 minutes.</p>
+<script>
+const q=new URLSearchParams(location.search);
+document.getElementById('msg').innerText=q.get('error')?('QuickBooks returned an error: '+q.get('error')):(q.get('code')?'Approved. Copy the text below and paste it back.':'No authorization code found.');
+document.getElementById('u').value=location.href;
+</script></body></html>
